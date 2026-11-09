@@ -57,3 +57,11 @@ body.dark .theme-toggle{color:#fff}
 body.dark .login-card{color:#18223a}
 @media(max-width:900px){.login-layout{grid-template-columns:1fr;gap:22px}.intro{min-height:390px;padding:36px}.study-art{width:165px}.login-card{max-width:560px}}
 @media(max-width:540px){.page{padding:10px 13px}.topbar{height:65px}.brand img{width:44px;height:44px}.brand strong{font-size:19px}.intro{min-height:340px;padding:26px 23px;border-radius:22px}.intro h1{font-size:43px}.intro>p{font-size:13px;max-width:280px}.study-art{width:125px}.login-card{padding:28px 21px 22px}.login-card h2{font-size:25px}.form-options{font-size:10px}}
+
+
+/* Dark mode fixes & enhancements */
+body.dark {--bg:#0b1428;--ink:#edf3ff;--muted:#a7b4ca;--line:#2a3957;--white:#14213b;--paper:#14213b;}
+body.dark .theme-toggle {color:#fff;background:var(--white);border-color:var(--line);}
+body.dark .field-wrap {background:#0f1c35;border-color:var(--line);}
+body.dark .field-wrap input {color:#edf3ff;}
+body.dark .login-card, body.dark .register-card, body.dark .recovery {background-color:var(--paper);border-color:var(--line);color:var(--ink);}
