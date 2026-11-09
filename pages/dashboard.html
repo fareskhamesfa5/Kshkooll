@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>لوحة التحكم | Koshkool</title><link rel="stylesheet" href="../css/global.css"></head>
+<body><header class="site-header"><a href="../index.html">Koshkool</a><nav><a href="dashboard.html">الرئيسية</a><a href="profile.html">حسابي</a><a href="settings.html">الإعدادات</a></nav></header>
+<main class="content"><p class="tag">KOSHKool • STUDY SPACE</p><h1 id="welcomeTitle">جارٍ تحميل حسابك...</h1><p id="accountRole"> </p><p>من هنا تقدر توصل لموادك وتتابع تقدمك الدراسي.</p>
+<a class="primary-link" href="../subjects/arabic/index.html">استكشف المواد</a>
+<button id="logoutButton" class="primary-link" type="button" style="margin-top:16px;cursor:pointer">تسجيل الخروج</button>
+</main>
+<script type="module">
+import { requireUser, getMyProfile, logout } from "../js/session.js";
+const user = await requireUser();
+if (user) {
+  const profile = await getMyProfile(user);
+  document.getElementById("welcomeTitle").textContent = "أهلاً بك، " + (profile?.full_name || user.email);
+  document.getElementById("accountRole").textContent = profile?.role === "admin" ? "حساب مدير الموقع" : "حساب طالب";
+}
+document.getElementById("logoutButton").addEventListener("click", logout);
+</script></body></html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101b36"><title>إنشاء حساب | Koshkool</title>
+<link rel="stylesheet" href="auth.css">
+<style>
+.register-card{max-width:520px;margin:42px auto;padding:34px 36px;background:var(--paper);border:1px solid #e8dfcd;border-radius:20px;box-shadow:var(--shadow);color:var(--ink);background-image:repeating-linear-gradient(transparent 0,transparent 38px,#dce8f4 39px)}
+.register-card h1{margin:12px 0 4px;font-size:30px}.register-card p{color:var(--muted);font-size:13px}
+.register-card label{display:block;font-size:13px;font-weight:700;margin:14px 0 6px}
+.register-card input{width:100%;height:48px;padding:0 13px;border:1px solid #d9e1ed;border-radius:11px;background:#fffdf8;color:#18223a}
+.register-card button{width:100%;height:50px;margin-top:20px;border:0;border-radius:12px;background:var(--blue);color:white;font-weight:800;cursor:pointer}
+.register-card a{color:var(--blue);text-decoration:none;font-weight:700}.register-card .status{min-height:22px;color:#a33}
+@media(max-width:540px){.register-card{margin:24px 4px;padding:26px 20px}}
+</style>
+</head>
+<body>
+<main class="page">
+<header class="topbar">
+<a class="brand" href="../index.html"><img src="assets/logo.svg" alt="Koshkool"><span><strong>Koshkool</strong><small>EGYPTIAN BACCALAUREATE 2027</small></span></a>
+<button class="theme-toggle" id="themeToggle" type="button" aria-label="تغيير المظهر">☼</button>
+</header>
+<section class="register-card">
+<span class="eyebrow">JOIN KOSHKool</span>
+<h1>ابدأ رحلتك الدراسية!</h1>
+<p>أنشئ حسابك للوصول إلى موادك ودروسك ومتابعة تقدمك.</p>
+<form id="registerForm" novalidate>
+<label for="fullName">الاسم</label><input id="fullName" name="fullName" autocomplete="name" required placeholder="اكتب اسمك">
+<label for="registerIdentity">البريد الإلكتروني</label><input id="registerIdentity" name="identity" autocomplete="username" required placeholder="name@gmail.com">
+<label for="registerPassword">كلمة المرور</label><input id="registerPassword" type="password" autocomplete="new-password" required minlength="8" placeholder="استخدم كلمة مرور قوية">
+<label for="confirmPassword">تأكيد كلمة المرور</label><input id="confirmPassword" type="password" autocomplete="new-password" required minlength="8" placeholder="أعد كتابة كلمة المرور">
+<button type="submit">إنشاء الحساب</button>
+<p class="status" id="registerStatus" role="status" aria-live="polite"></p>
+</form>
+
+<p>لديك حساب بالفعل؟ <a href="login.html">تسجيل الدخول</a></p>
+
+</section>
+</main>
+<script type="module" src="auth.js"></script>
+</body></html>
