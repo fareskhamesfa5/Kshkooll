@@ -173,6 +173,7 @@
     menuButton.setAttribute("aria-controls", "studentSidebar");
     menuButton.setAttribute("aria-expanded", "false");
     menuButton.textContent = "☰";
+    document.body.classList.add("has-student-sidebar");
     document.body.append(sidebar, backdrop, menuButton);
     const closeButton = sidebar.querySelector(".sidebar-close");
     function closeSidebar() {
