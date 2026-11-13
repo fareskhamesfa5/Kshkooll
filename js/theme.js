@@ -4,6 +4,12 @@
   const scriptUrl = document.currentScript.src;
   const iconsBase = new URL("../assets/icons/", scriptUrl);
   const logoUrl = new URL("../assets/images/logo.svg", scriptUrl).href;
+  const faviconUrl = new URL("favicon.svg", iconsBase).href;
+  const favicon = document.querySelector("link[rel~="icon"]") || document.createElement("link");
+  favicon.rel = "icon";
+  favicon.type = "image/svg+xml";
+  favicon.href = faviconUrl;
+  if (!favicon.isConnected) document.head.appendChild(favicon);
   const icons = {
     light: new URL("moon.svg", iconsBase).href,
     dark: new URL("sun.svg", iconsBase).href
@@ -126,15 +132,15 @@
   if (!/\/auth\//.test(pagePath)) {
     const rootUrl = new URL("../", scriptUrl);
     const routes = [
-      { label: "الرئيسية", href: "pages/dashboard.html", icon: "⌂", match: "/pages/dashboard.html" },
-      { label: "اللغة العربية", href: "subjects/arabic/index.html", icon: "ع", match: "/subjects/arabic/" },
-      { label: "اللغة الإنجليزية", href: "subjects/english/index.html", icon: "EN", match: "/subjects/english/" },
-      { label: "التاريخ", href: "subjects/history/index.html", icon: "ت", match: "/subjects/history/" },
-      { label: "البرمجة", href: "subjects/programming/index.html", icon: "</>", match: "/subjects/programming/" },
-      { label: "الامتحانات", href: "pages/exams.html", icon: "▤", match: "/pages/exams.html" },
-      { label: "التقدم الدراسي", href: "pages/progress.html", icon: "↗", match: "/pages/progress.html" },
-      { label: "الملف الشخصي", href: "pages/profile.html", icon: "◎", match: "/pages/profile.html" },
-      { label: "الإعدادات", href: "pages/settings.html", icon: "⚙", match: "/pages/settings.html" }
+      { label: "الرئيسية", href: "pages/dashboard.html", icon: "home.svg", match: "/pages/dashboard.html" },
+      { label: "اللغة العربية", href: "subjects/arabic/index.html", icon: "book-open.svg", match: "/subjects/arabic/" },
+      { label: "اللغة الإنجليزية", href: "subjects/english/index.html", icon: "languages.svg", match: "/subjects/english/" },
+      { label: "التاريخ", href: "subjects/history/index.html", icon: "landmark.svg", match: "/subjects/history/" },
+      { label: "البرمجة", href: "subjects/programming/index.html", icon: "code.svg", match: "/subjects/programming/" },
+      { label: "الامتحانات", href: "pages/exams.html", icon: "clipboard-check.svg", match: "/pages/exams.html" },
+      { label: "التقدم الدراسي", href: "pages/progress.html", icon: "chart.svg", match: "/pages/progress.html" },
+      { label: "الملف الشخصي", href: "pages/profile.html", icon: "user-round.svg", match: "/pages/profile.html" },
+      { label: "الإعدادات", href: "pages/settings.html", icon: "settings.svg", match: "/pages/settings.html" }
     ];
     const sidebar = document.createElement("aside");
     sidebar.className = "student-sidebar";
@@ -156,7 +162,7 @@
       const link = document.createElement("a");
       link.className = "sidebar-link";
       link.href = new URL(item.href, rootUrl).href;
-      link.innerHTML = `<span class="sidebar-link-icon" aria-hidden="true">${item.icon}</span><span>${item.label}</span>`;
+      link.innerHTML = `<span class="sidebar-link-icon" aria-hidden="true"><img src="${new URL(item.icon, iconsBase).href}" alt="" loading="lazy"></span><span>${item.label}</span>`;
       if (pagePath.includes(item.match)) {
         link.classList.add("active");
         link.setAttribute("aria-current", "page");
@@ -187,7 +193,7 @@
       profileLink.href = new URL("pages/profile.html", rootUrl).href;
       profileLink.setAttribute("aria-label", "المعلومات الشخصية");
       profileLink.title = "المعلومات الشخصية";
-      profileLink.innerHTML = '<span aria-hidden="true">◎</span>';
+      profileLink.innerHTML = `<img src="${new URL("user-round.svg", iconsBase).href}" alt="" aria-hidden="true">`;
       header.appendChild(profileLink);
       const brandToggle = header.querySelector(".site-brand, .kshkooll-brand");
       if (brandToggle) {
