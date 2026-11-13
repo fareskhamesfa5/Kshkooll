@@ -193,7 +193,7 @@
     backdrop.addEventListener("click", closeSidebar);
     // Clicking the Kshkooll logo opens the shared sidebar instead of navigating away.
     document.addEventListener("click", (event) => {
-      const logo = event.target.closest(".kshkooll-brand, .sidebar-brand, .landing-logo, img[alt='Kshkooll']");
+      const logo = event.target.closest(".site-brand, .kshkooll-brand, .sidebar-brand, .landing-logo, img[alt='Kshkooll']");
       if (!logo) return;
       event.preventDefault();
       openSidebar();
