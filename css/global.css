@@ -131,3 +131,16 @@ body.has-student-sidebar .site-header .theme-toggle{position:fixed;top:16px;righ
   body.has-student-sidebar .site-header .theme-toggle{right:126px;top:16px}
   .header-profile-link{right:70px;top:14px}
 }
+
+/* Align the three header controls at the far left; the brand itself toggles the sidebar. */
+body.has-student-sidebar .site-header{justify-content:flex-start}
+body.has-student-sidebar .site-header .site-brand,
+body.has-student-sidebar .site-header .kshkooll-brand{position:fixed;top:14px;left:14px;right:auto;z-index:1003;min-height:48px}
+body.has-student-sidebar .site-header .theme-toggle{position:fixed;top:16px;left:126px;right:auto;z-index:1003}
+body.has-student-sidebar .header-profile-link{position:fixed;top:14px;left:70px;right:auto;z-index:1003}
+@media(max-width:760px){
+  body.has-student-sidebar .site-header .site-brand,
+  body.has-student-sidebar .site-header .kshkooll-brand{left:14px;right:auto}
+  body.has-student-sidebar .site-header .theme-toggle{left:126px;right:auto;top:16px}
+  body.has-student-sidebar .header-profile-link{left:70px;right:auto;top:14px}
+}
