@@ -196,7 +196,7 @@
       const logo = event.target.closest(".site-brand, .kshkooll-brand, .sidebar-brand, .landing-logo, img[alt='Kshkooll']");
       if (!logo) return;
       event.preventDefault();
-      openSidebar();
+      document.body.classList.contains("sidebar-open") ? closeSidebar() : openSidebar();
     });
 
     document.addEventListener("keydown", (event) => {
