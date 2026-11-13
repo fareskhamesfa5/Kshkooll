@@ -55,6 +55,26 @@
     }
   });
 
+  // Pages without a header still get a compact route back to the student area.
+  if (!document.body.classList.contains("landing") &&
+      !document.querySelector("a.kshkooll-brand")) {
+    const main = document.querySelector("main");
+    if (main) {
+      const brand = document.createElement("a");
+      brand.href = new URL("../pages/dashboard.html", scriptUrl).href;
+      brand.className = "kshkooll-brand page-brand";
+      const img = document.createElement("img");
+      img.src = logoUrl;
+      img.alt = "Kshkooll";
+      img.className = "brand-logo-mark";
+      const name = document.createElement("span");
+      name.className = "brand-name";
+      name.textContent = "Kshkooll";
+      brand.append(img, name);
+      main.prepend(brand);
+    }
+  }
+
   // Replace legacy brand spelling in page titles and visible text only.
   document.title = document.title.replace(/Koshkool/gi, "Kshkooll");
   const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
