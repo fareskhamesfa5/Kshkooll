@@ -117,3 +117,17 @@ body.sidebar-open{overflow:hidden}
   .site-header .site-brand .brand-logo-mark{width:38px;height:38px;flex-basis:38px}
   .site-header .theme-toggle{width:40px;height:40px;flex-basis:40px}
 }
+
+/* Header is reduced to logo, personal profile shortcut, and theme switch. */
+body.has-student-sidebar .site-header{position:relative;min-height:76px;padding-inline:18px}
+body.has-student-sidebar .site-header nav a{display:none}
+body.has-student-sidebar .site-header nav{display:none}
+body.has-student-sidebar .site-header .theme-toggle{position:fixed;top:16px;right:126px;z-index:1003}
+.header-profile-link{position:fixed;top:14px;right:70px;z-index:1003;width:48px;height:48px;display:grid;place-items:center;border:1px solid var(--line);border-radius:13px;background:var(--paper);color:var(--ink);font-size:25px;box-shadow:0 5px 18px rgba(0,0,0,.12)}
+.header-profile-link:hover{color:var(--blue);border-color:var(--blue)}
+.sidebar-logout{width:100%;border:0;background:transparent;text-align:right;font:inherit;cursor:pointer}
+.sidebar-logout::before{content:"↪";width:30px;height:30px;display:grid;place-items:center;flex:0 0 30px;border-radius:9px;background:#f0f4fa;color:#52739e;font-weight:800}
+@media(max-width:760px){
+  body.has-student-sidebar .site-header .theme-toggle{right:126px;top:16px}
+  .header-profile-link{right:70px;top:14px}
+}
