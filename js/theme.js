@@ -169,10 +169,14 @@
     const menuButton = document.createElement("button");
     menuButton.className = "sidebar-menu-button";
     menuButton.type = "button";
-    menuButton.setAttribute("aria-label", "فتح القائمة الجانبية");
+    menuButton.setAttribute("aria-label", "فتح أو إغلاق القائمة الجانبية");
     menuButton.setAttribute("aria-controls", "studentSidebar");
     menuButton.setAttribute("aria-expanded", "false");
-    menuButton.textContent = "☰";
+    const menuLogo = document.createElement("img");
+    menuLogo.src = logoUrl;
+    menuLogo.alt = "Kshkooll";
+    menuLogo.className = "sidebar-menu-logo";
+    menuButton.appendChild(menuLogo);
     document.body.classList.add("has-student-sidebar");
     document.body.append(sidebar, backdrop, menuButton);
     const closeButton = sidebar.querySelector(".sidebar-close");
