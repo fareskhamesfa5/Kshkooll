@@ -22,49 +22,59 @@ body.dark .site-header nav a:hover{color:var(--blue)}
 .brand-name{font-weight:800;letter-spacing:.2px}
 .landing-logo{width:112px;height:112px;object-fit:contain}
 
-/* Readable typography in dark mode */
-body.dark,
-body.dark p,
-body.dark li,
-body.dark label,
-body.dark small,
-body.dark span,
-body.dark strong,
-body.dark b,
-body.dark td,
-body.dark th,
-body.dark dt,
-body.dark dd {
-  color: var(--ink);
+/* Kshkooll dark visual system */
+body.dark{
+  --navy:#f0f5ff;
+  --navy2:#c8d8f4;
+  --blue:#79adff;
+  --yellow:#ffd45c;
+  --paper:#172640;
+  --ink:#edf4ff;
+  --muted:#a9bad4;
+  --bg:#091326;
+  --line:#2a3d5d;
+  --shadow:0 18px 44px rgba(0,0,0,.28);
+  background:
+    radial-gradient(ellipse at 12% 0%,rgba(39,100,183,.16),transparent 38%),
+    radial-gradient(ellipse at 95% 30%,rgba(27,68,127,.12),transparent 34%),
+    var(--bg);
+  color:var(--ink);
 }
-body.dark h1,
-body.dark h2,
-body.dark h3,
-body.dark h4,
-body.dark h5,
-body.dark h6,
-body.dark .content h1 {
-  color: var(--navy);
+body.dark .site-header{
+  background:rgba(12,25,46,.88);
+  border-color:var(--line);
+  box-shadow:0 8px 28px rgba(0,0,0,.16);
 }
-body.dark .muted,
-body.dark .text-muted,
-body.dark .description,
-body.dark .hint,
-body.dark .subtitle {
-  color: var(--muted);
+body.dark .site-header a,
+body.dark .kshkooll-brand{color:var(--ink)}
+body.dark .site-header nav a{color:var(--muted)}
+body.dark .site-header nav a:hover{color:var(--blue)}
+body.dark .content h1,
+body.dark .content h2,
+body.dark .content h3{color:var(--ink)}
+body.dark .content>p:not(.tag){color:var(--muted)}
+body.dark .paper,
+body.dark .tiles a{
+  color:var(--ink);
+  background:#14243e;
+  background-image:none;
+  border-color:var(--line);
+  box-shadow:var(--shadow);
+}
+body.dark .tag{color:var(--blue)}
+body.dark .theme-toggle{
+  color:var(--ink);
+  background:#172b49;
+  border-color:var(--line);
+  box-shadow:0 6px 18px rgba(0,0,0,.24);
 }
 body.dark input,
 body.dark textarea,
-body.dark select {
-  color: var(--ink);
-  background-color: var(--paper);
-  border-color: var(--line);
+body.dark select{
+  color:var(--ink);
+  background:#101f38;
+  border-color:var(--line);
 }
 body.dark input::placeholder,
-body.dark textarea::placeholder {
-  color: var(--muted);
-  opacity: 1;
-}
-body.dark a:not(.primary-link):not(.subject-card):not(.quick-link) {
-  color: var(--blue);
-}
+body.dark textarea::placeholder{color:#91a5c3;opacity:1}
+body.dark ::selection{background:#315f9c;color:#fff}
