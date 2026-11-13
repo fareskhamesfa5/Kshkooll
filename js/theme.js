@@ -166,19 +166,8 @@
     const backdrop = document.createElement("div");
     backdrop.className = "sidebar-backdrop";
     backdrop.hidden = true;
-    const menuButton = document.createElement("button");
-    menuButton.className = "sidebar-menu-button";
-    menuButton.type = "button";
-    menuButton.setAttribute("aria-label", "فتح أو إغلاق القائمة الجانبية");
-    menuButton.setAttribute("aria-controls", "studentSidebar");
-    menuButton.setAttribute("aria-expanded", "false");
-    const menuLogo = document.createElement("img");
-    menuLogo.src = logoUrl;
-    menuLogo.alt = "Kshkooll";
-    menuLogo.className = "sidebar-menu-logo";
-    menuButton.appendChild(menuLogo);
     document.body.classList.add("has-student-sidebar");
-    document.body.append(sidebar, backdrop, menuButton);
+    document.body.append(sidebar, backdrop);
 
     // Move header navigation actions into the sidebar; keep theme and profile controls beside the logo.
     const header = document.querySelector(".site-header, .topbar");
@@ -193,7 +182,6 @@
       headerNav.querySelectorAll("a").forEach((link) => link.remove());
       const themeButton = header.querySelector(".theme-toggle");
       if (themeButton) header.appendChild(themeButton);
-      header.appendChild(menuButton);
       const profileLink = document.createElement("a");
       profileLink.className = "header-profile-link";
       profileLink.href = new URL("pages/profile.html", rootUrl).href;
@@ -201,27 +189,32 @@
       profileLink.title = "المعلومات الشخصية";
       profileLink.innerHTML = '<span aria-hidden="true">◎</span>';
       header.appendChild(profileLink);
+      const brandToggle = header.querySelector(".site-brand, .kshkooll-brand");
+      if (brandToggle) {
+        brandToggle.setAttribute("role", "button");
+        brandToggle.setAttribute("aria-label", "فتح أو إغلاق القائمة الجانبية");
+        brandToggle.setAttribute("aria-controls", "studentSidebar");
+        brandToggle.setAttribute("aria-expanded", "false");
+        brandToggle.style.cursor = "pointer";
+      }
     }
 
     const closeButton = sidebar.querySelector(".sidebar-close");
     function closeSidebar() {
       document.body.classList.remove("sidebar-open");
       backdrop.hidden = true;
-      menuButton.setAttribute("aria-expanded", "false");
+      header?.querySelector(".site-brand, .kshkooll-brand")?.setAttribute("aria-expanded", "false");
     }
     function openSidebar() {
       document.body.classList.add("sidebar-open");
       backdrop.hidden = false;
-      menuButton.setAttribute("aria-expanded", "true");
+      header?.querySelector(".site-brand, .kshkooll-brand")?.setAttribute("aria-expanded", "true");
     }
-    menuButton.addEventListener("click", () => {
-      document.body.classList.contains("sidebar-open") ? closeSidebar() : openSidebar();
-    });
     closeButton.addEventListener("click", closeSidebar);
     backdrop.addEventListener("click", closeSidebar);
     // Clicking the Kshkooll logo opens the shared sidebar instead of navigating away.
     document.addEventListener("click", (event) => {
-      const logo = event.target.closest(".site-brand, .kshkooll-brand, .sidebar-brand, .landing-logo, img[alt='Kshkooll']");
+      const logo = event.target.closest(".site-header .site-brand, .site-header .kshkooll-brand, .sidebar-brand, .landing-logo, img[alt='Kshkooll']");
       if (!logo) return;
       event.preventDefault();
       document.body.classList.contains("sidebar-open") ? closeSidebar() : openSidebar();
