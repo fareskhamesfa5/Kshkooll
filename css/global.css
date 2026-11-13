@@ -196,10 +196,3 @@ body.has-student-sidebar .header-profile-link{left:70px;right:auto}
   body.sidebar-open .site-header .kshkooll-brand{opacity:0!important;visibility:hidden!important}
 }
 
-
-/* Local SVG navigation and browser icons */
-.sidebar-link-icon img{width:18px;height:18px;display:block;object-fit:contain;filter:invert(37%) sepia(19%) saturate(1100%) hue-rotate(177deg)}
-body.dark .sidebar-link-icon img{filter:brightness(0) invert(.82)}
-.header-profile-link{display:inline-grid;place-items:center;width:42px;height:42px;border:1px solid var(--line);border-radius:50%;background:var(--paper);color:var(--ink)}
-.header-profile-link img{width:20px;height:20px;display:block;object-fit:contain;filter:invert(37%) sepia(19%) saturate(1100%) hue-rotate(177deg)}
-body.dark .header-profile-link img{filter:brightness(0) invert(.88)}
