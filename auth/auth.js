@@ -174,25 +174,3 @@ if (resetForm) {
   });
 }
 
-
-// Theme Toggle Handler
-document.addEventListener('DOMContentLoaded', () => {
-  const themeToggleBtn = document.getElementById('themeToggle') || document.querySelector('.theme-toggle');
-  const savedTheme = localStorage.getItem('koshkool_theme') || 'light';
-
-  if (savedTheme === 'dark') {
-    document.body.classList.add('dark');
-    if (themeToggleBtn) themeToggleBtn.textContent = '☀️';
-  } else {
-    if (themeToggleBtn) themeToggleBtn.textContent = '🌙';
-  }
-
-  if (themeToggleBtn) {
-    themeToggleBtn.addEventListener('click', () => {
-      document.body.classList.toggle('dark');
-      const isDark = document.body.classList.contains('dark');
-      localStorage.setItem('koshkool_theme', isDark ? 'dark' : 'light');
-      themeToggleBtn.textContent = isDark ? '☀️' : '🌙';
-    });
-  }
-});
