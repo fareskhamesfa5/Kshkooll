@@ -78,3 +78,37 @@ body.dark select{
 body.dark input::placeholder,
 body.dark textarea::placeholder{color:#91a5c3;opacity:1}
 body.dark ::selection{background:#315f9c;color:#fff}
+
+
+/* Shared Kshkooll student sidebar */
+.student-sidebar{position:fixed;z-index:1001;inset:0 0 0 auto;width:264px;padding:24px 17px 18px;background:#fff;border-left:1px solid var(--line);box-shadow:0 12px 38px rgba(16,27,54,.10);display:flex;flex-direction:column;gap:18px;overflow-y:auto}
+body.dark .student-sidebar{background:#0e1c33;border-color:var(--line);box-shadow:0 12px 38px rgba(0,0,0,.28)}
+.sidebar-head{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:0 5px 17px;border-bottom:1px solid var(--line)}
+.sidebar-brand{display:flex;align-items:center;gap:10px;color:var(--ink);font-size:19px;font-weight:800}
+.sidebar-brand img{width:39px;height:39px;object-fit:contain}
+.sidebar-close{display:none;border:0;background:transparent;color:var(--muted);font-size:27px;cursor:pointer}
+.sidebar-caption{margin:0 8px -8px;color:var(--muted);font-size:12px;font-weight:700}
+.sidebar-nav{display:flex;flex-direction:column;gap:7px}
+.sidebar-link{display:flex;align-items:center;gap:12px;padding:11px 12px;border:1px solid transparent;border-radius:12px;color:var(--muted);font-weight:600;transition:background .2s,color .2s,border-color .2s}
+.sidebar-link:hover{background:#edf4ff;color:#246bd0}
+.sidebar-link.active{background:#eaf2ff;border-color:#d7e6ff;color:#1e63c5;font-weight:800}
+body.dark .sidebar-link:hover{background:#172c4b;color:#a9caff}
+body.dark .sidebar-link.active{background:#1a3559;border-color:#31537f;color:#a9caff}
+.sidebar-link-icon{width:30px;height:30px;display:grid;place-items:center;flex:0 0 30px;border-radius:9px;background:#f0f4fa;color:#52739e;font-size:13px;font-weight:800;direction:ltr}
+.sidebar-link.active .sidebar-link-icon{background:#d7e7ff;color:#1e63c5}
+body.dark .sidebar-link-icon{background:#1a2d49;color:#a9bad4}
+body.dark .sidebar-link.active .sidebar-link-icon{background:#284a75;color:#c4dcff}
+.sidebar-bottom{margin-top:auto;padding:15px 8px 0;border-top:1px solid var(--line);color:var(--muted);font:700 9px Arial,sans-serif;letter-spacing:1.5px;direction:ltr}
+.sidebar-dot{display:inline-block;width:7px;height:7px;margin-right:6px;border-radius:50%;background:#36b783}
+.sidebar-menu-button{display:none}
+.sidebar-backdrop{display:none}
+body{padding-right:264px}
+@media(max-width:760px){
+  body{padding-right:0}
+  .student-sidebar{width:min(290px,86vw);transform:translateX(110%);transition:transform .25s ease}
+  body.sidebar-open .student-sidebar{transform:translateX(0)}
+  .sidebar-close{display:block}
+  .sidebar-menu-button{display:grid;place-items:center;position:fixed;z-index:1002;top:14px;right:14px;width:44px;height:44px;border:1px solid var(--line);border-radius:12px;background:var(--paper);color:var(--ink);font-size:21px;box-shadow:0 5px 18px rgba(0,0,0,.14);cursor:pointer}
+  .sidebar-backdrop:not([hidden]){display:block;position:fixed;z-index:1000;inset:0;background:rgba(3,10,22,.56)}
+  body.sidebar-open{overflow:hidden}
+}
