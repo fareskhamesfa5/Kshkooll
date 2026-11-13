@@ -179,6 +179,30 @@
     menuButton.appendChild(menuLogo);
     document.body.classList.add("has-student-sidebar");
     document.body.append(sidebar, backdrop, menuButton);
+
+    // Move header navigation actions into the sidebar; keep theme and profile controls beside the logo.
+    const header = document.querySelector(".site-header, .topbar");
+    const headerNav = header?.querySelector("nav");
+    if (header && headerNav) {
+      const logout = headerNav.querySelector("#logoutButton, .logout-button");
+      if (logout) {
+        logout.classList.add("sidebar-link", "sidebar-logout");
+        logout.textContent = "تسجيل الخروج";
+        nav.appendChild(logout);
+      }
+      headerNav.querySelectorAll("a").forEach((link) => link.remove());
+      const themeButton = header.querySelector(".theme-toggle");
+      if (themeButton) header.appendChild(themeButton);
+      header.appendChild(menuButton);
+      const profileLink = document.createElement("a");
+      profileLink.className = "header-profile-link";
+      profileLink.href = new URL("pages/profile.html", rootUrl).href;
+      profileLink.setAttribute("aria-label", "المعلومات الشخصية");
+      profileLink.title = "المعلومات الشخصية";
+      profileLink.innerHTML = '<span aria-hidden="true">◎</span>';
+      header.appendChild(profileLink);
+    }
+
     const closeButton = sidebar.querySelector(".sidebar-close");
     function closeSidebar() {
       document.body.classList.remove("sidebar-open");
