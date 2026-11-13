@@ -157,3 +157,12 @@ body.has-student-sidebar .site-header .kshkooll-brand{left:auto;right:14px}
 /* Hide the header logo while the sidebar is open. */
 body.sidebar-open .site-header .site-brand,
 body.sidebar-open .site-header .kshkooll-brand{opacity:0;visibility:hidden;pointer-events:none;transition:opacity .18s ease,visibility .18s ease}
+
+
+/* Move the left-side header controls to the extreme left. */
+body.has-student-sidebar .site-header .theme-toggle{left:14px;right:auto}
+body.has-student-sidebar .header-profile-link{left:70px;right:auto}
+@media(max-width:760px){
+  body.has-student-sidebar .site-header .theme-toggle{left:14px;right:auto}
+  body.has-student-sidebar .header-profile-link{left:70px;right:auto}
+}
