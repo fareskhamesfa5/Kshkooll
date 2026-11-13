@@ -13,3 +13,11 @@ body.dark .site-header nav a:hover{color:var(--blue)}
 .theme-toggle-icon.is-animating{animation:themeIconPop .48s cubic-bezier(.2,.8,.2,1)}
 @keyframes themeIconPop{0%{transform:rotate(-100deg) scale(.35);opacity:.2}65%{transform:rotate(18deg) scale(1.2);opacity:1}100%{transform:rotate(0) scale(1)}}
 @media(prefers-reduced-motion:reduce){.theme-toggle,.theme-toggle-icon{transition:none}.theme-toggle-icon.is-animating{animation:none}}
+
+
+/* Unified Kshkooll identity */
+.kshkooll-brand{display:inline-flex;align-items:center;gap:10px;color:var(--ink);font-weight:800}
+.brand-logo-mark{width:42px;height:42px;flex:0 0 42px;object-fit:contain;border-radius:12px}
+.site-brand .brand-logo-mark{width:40px;height:40px;flex-basis:40px}
+.brand-name{font-weight:800;letter-spacing:.2px}
+.landing-logo{width:112px;height:112px;object-fit:contain}
