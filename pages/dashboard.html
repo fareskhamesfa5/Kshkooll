@@ -1,17 +1,83 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>لوحة التحكم | Koshkool</title><link rel="stylesheet" href="../css/global.css"></head>
-<body><header class="site-header"><a href="../index.html">Koshkool</a><nav><a href="dashboard.html">الرئيسية</a><a href="profile.html">حسابي</a><a href="settings.html">الإعدادات</a></nav></header>
-<main class="content"><p class="tag">KOSHKool • STUDY SPACE</p><h1 id="welcomeTitle">جارٍ تحميل حسابك...</h1><p id="accountRole"> </p><p>من هنا تقدر توصل لموادك وتتابع تقدمك الدراسي.</p>
-<a class="primary-link" href="../subjects/arabic/index.html">استكشف المواد</a>
-<button id="logoutButton" class="primary-link" type="button" style="margin-top:16px;cursor:pointer">تسجيل الخروج</button>
-</main>
-<script type="module">
-import { requireUser, getMyProfile, logout } from "../js/session.js";
-const user = await requireUser();
-if (user) {
-  const profile = await getMyProfile(user);
-  document.getElementById("welcomeTitle").textContent = "أهلاً بك، " + (profile?.full_name || user.email);
-  document.getElementById("accountRole").textContent = profile?.role === "admin" ? "حساب مدير الموقع" : "حساب طالب";
-}
-document.getElementById("logoutButton").addEventListener("click", logout);
-</script></body></html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101b36">
+  <title>لوحة التحكم | Koshkool</title>
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <script src="../js/theme.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="site-brand" href="../index.html">Koshkool<span style="color:var(--blue)">.</span></a>
+    <nav aria-label="التنقل الرئيسي">
+      <a class="active" href="dashboard.html">الرئيسية</a>
+      <a href="profile.html">حسابي</a>
+      <a href="progress.html">تقدمي</a>
+      <a href="exams.html">الاختبارات</a>
+      <a href="settings.html">الإعدادات</a>
+      <button id="logoutButton" class="logout-button" type="button" title="تسجيل الخروج" aria-label="تسجيل الخروج">↪</button>
+    </nav>
+  </header>
+
+  <main class="dashboard">
+    <div class="dash-topline">
+      <span class="dash-kicker">YOUR PERSONAL STUDY SPACE</span>
+      <span class="dash-date" id="todayDate">مساحتك الدراسية في مكان واحد</span>
+    </div>
+
+    <section class="welcome-panel">
+      <div class="welcome-copy">
+        <span class="welcome-label">KOSHKool • 2027</span>
+        <h1 id="welcomeTitle">أهلاً بك في كشكول 👋</h1>
+        <p>كل خطوة صغيرة بتقربك من هدفك. اختار مادتك وابدأ مذاكرتك النهارده.</p>
+        <a class="primary-link" href="../subjects/arabic/index.html">ابدأ المذاكرة <span aria-hidden="true">←</span></a>
+      </div>
+      <div class="welcome-art" aria-hidden="true">📚</div>
+    </section>
+
+    <section class="dash-section" aria-labelledby="statsTitle">
+      <div class="section-heading"><div><h2 id="statsTitle">ملخص رحلتك</h2><p>نظرة سريعة على مساحتك التعليمية</p></div></div>
+      <div class="stats-grid">
+        <article class="stat-card"><div class="stat-top"><span>المواد الدراسية</span><span class="stat-icon">📚</span></div><div class="stat-value">04</div><div class="stat-note">مواد متاحة للتعلم</div></article>
+        <article class="stat-card"><div class="stat-top"><span>الاختبارات</span><span class="stat-icon">✍️</span></div><div class="stat-value">قريباً</div><div class="stat-note">تابع تقدمك بعد إتاحة الاختبارات</div></article>
+        <article class="stat-card"><div class="stat-top"><span>إنجازك الدراسي</span><span class="stat-icon">🏆</span></div><div class="stat-value">ابدأ الآن</div><div class="stat-note">رحلتك تبدأ بأول درس</div></article>
+      </div>
+    </section>
+
+    <section class="dash-section" aria-labelledby="subjectsTitle">
+      <div class="section-heading"><div><h2 id="subjectsTitle">موادك الدراسية</h2><p>اختار المادة اللي حابب تذاكرها</p></div></div>
+      <div class="subjects-grid">
+        <a class="subject-card" href="../subjects/arabic/index.html"><span class="subject-icon">📖</span><div><h3>اللغة العربية</h3><p>نحو • أدب • بلاغة</p></div><span class="subject-arrow">←</span></a>
+        <a class="subject-card" href="../subjects/english/index.html"><span class="subject-icon">🔤</span><div><h3>اللغة الإنجليزية</h3><p>Language • Reading</p></div><span class="subject-arrow">←</span></a>
+        <a class="subject-card" href="../subjects/history/index.html"><span class="subject-icon">🏛️</span><div><h3>التاريخ</h3><p>أحداث • شخصيات • حضارات</p></div><span class="subject-arrow">←</span></a>
+        <a class="subject-card" href="../subjects/programming/index.html"><span class="subject-icon">💻</span><div><h3>البرمجة</h3><p>منطق • أكواد • تطبيق</p></div><span class="subject-arrow">←</span></a>
+      </div>
+    </section>
+
+    <section class="dash-section" aria-labelledby="quickTitle">
+      <div class="section-heading"><div><h2 id="quickTitle">وصول سريع</h2><p>كل الأدوات المهمة على بُعد خطوة</p></div></div>
+      <div class="quick-grid">
+        <a class="quick-link" href="progress.html"><span class="quick-icon">📈</span><span><b>متابعة التقدم</b><small>راجع إنجازك الدراسي</small></span></a>
+        <a class="quick-link" href="exams.html"><span class="quick-icon">📝</span><span><b>الاختبارات</b><small>اختبر معلوماتك قريباً</small></span></a>
+        <a class="quick-link" href="profile.html"><span class="quick-icon">👤</span><span><b>ملفي الشخصي</b><small>راجع بيانات حسابك</small></span></a>
+      </div>
+    </section>
+    <footer class="dash-footer"><span>Koshkool — Your personal study space</span><span>تعلم • نظم • تقدم</span></footer>
+  </main>
+
+  <script type="module">
+    import { requireUser, getMyProfile, logout } from "../js/session.js";
+    const user = await requireUser();
+    if (user) {
+      const profile = await getMyProfile(user);
+      const name = profile?.full_name || user.email?.split('@')[0] || 'طالبنا العزيز';
+      document.getElementById('welcomeTitle').textContent = `أهلاً بك، ${name} 👋`;
+    }
+    document.getElementById('logoutButton').addEventListener('click', logout);
+    document.getElementById('todayDate').textContent = new Intl.DateTimeFormat('ar-EG', { weekday:'long', day:'numeric', month:'long' }).format(new Date());
+  </script>
+</body>
+</html>
