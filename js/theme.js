@@ -120,4 +120,79 @@
     localStorage.setItem(KEY, document.body.classList.contains("dark") ? "dark" : "light");
     renderTheme(true);
   });
+
+  // Shared student sidebar on learning pages (authentication screens stay focused).
+  const pagePath = window.location.pathname;
+  if (!/\/auth\//.test(pagePath) && !document.body.classList.contains("landing")) {
+    const rootUrl = new URL("../", scriptUrl);
+    const routes = [
+      { label: "الرئيسية", href: "pages/dashboard.html", icon: "⌂", match: "/pages/dashboard.html" },
+      { label: "اللغة العربية", href: "subjects/arabic/index.html", icon: "ع", match: "/subjects/arabic/" },
+      { label: "اللغة الإنجليزية", href: "subjects/english/index.html", icon: "EN", match: "/subjects/english/" },
+      { label: "التاريخ", href: "subjects/history/index.html", icon: "ت", match: "/subjects/history/" },
+      { label: "البرمجة", href: "subjects/programming/index.html", icon: "</>", match: "/subjects/programming/" },
+      { label: "الامتحانات", href: "pages/exams.html", icon: "▤", match: "/pages/exams.html" },
+      { label: "التقدم الدراسي", href: "pages/progress.html", icon: "↗", match: "/pages/progress.html" },
+      { label: "الملف الشخصي", href: "pages/profile.html", icon: "◎", match: "/pages/profile.html" },
+      { label: "الإعدادات", href: "pages/settings.html", icon: "⚙", match: "/pages/settings.html" }
+    ];
+    const sidebar = document.createElement("aside");
+    sidebar.className = "student-sidebar";
+    sidebar.id = "studentSidebar";
+    sidebar.setAttribute("aria-label", "القائمة الجانبية");
+    sidebar.innerHTML = `
+      <div class="sidebar-head">
+        <a class="sidebar-brand" href="${new URL("pages/dashboard.html", rootUrl).href}">
+          <img src="${logoUrl}" alt="" /> <span>Kshkooll</span>
+        </a>
+        <button class="sidebar-close" type="button" aria-label="إغلاق القائمة">×</button>
+      </div>
+      <p class="sidebar-caption">مساحة التعلم</p>
+      <nav class="sidebar-nav"></nav>
+      <div class="sidebar-bottom"><span class="sidebar-dot"></span> YOUR LEARNING SPACE</div>
+    `;
+    const nav = sidebar.querySelector(".sidebar-nav");
+    routes.forEach((item) => {
+      const link = document.createElement("a");
+      link.className = "sidebar-link";
+      link.href = new URL(item.href, rootUrl).href;
+      link.innerHTML = `<span class="sidebar-link-icon" aria-hidden="true">${item.icon}</span><span>${item.label}</span>`;
+      if (pagePath.includes(item.match)) {
+        link.classList.add("active");
+        link.setAttribute("aria-current", "page");
+      }
+      nav.appendChild(link);
+    });
+    const backdrop = document.createElement("div");
+    backdrop.className = "sidebar-backdrop";
+    backdrop.hidden = true;
+    const menuButton = document.createElement("button");
+    menuButton.className = "sidebar-menu-button";
+    menuButton.type = "button";
+    menuButton.setAttribute("aria-label", "فتح القائمة الجانبية");
+    menuButton.setAttribute("aria-controls", "studentSidebar");
+    menuButton.setAttribute("aria-expanded", "false");
+    menuButton.textContent = "☰";
+    document.body.append(sidebar, backdrop, menuButton);
+    const closeButton = sidebar.querySelector(".sidebar-close");
+    function closeSidebar() {
+      document.body.classList.remove("sidebar-open");
+      backdrop.hidden = true;
+      menuButton.setAttribute("aria-expanded", "false");
+    }
+    function openSidebar() {
+      document.body.classList.add("sidebar-open");
+      backdrop.hidden = false;
+      menuButton.setAttribute("aria-expanded", "true");
+    }
+    menuButton.addEventListener("click", () => {
+      document.body.classList.contains("sidebar-open") ? closeSidebar() : openSidebar();
+    });
+    closeButton.addEventListener("click", closeSidebar);
+    backdrop.addEventListener("click", closeSidebar);
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeSidebar();
+    });
+  }
+
 })();
