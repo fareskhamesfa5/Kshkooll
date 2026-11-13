@@ -102,9 +102,9 @@ body.dark .sidebar-link.active .sidebar-link-icon{background:#284a75;color:#c4dc
 .sidebar-dot{display:inline-block;width:7px;height:7px;margin-right:6px;border-radius:50%;background:#36b783}
 .sidebar-menu-button{display:none}
 .sidebar-backdrop{display:none}
-body{padding-right:264px}
+body.has-student-sidebar{padding-right:264px}
 @media(max-width:760px){
-  body{padding-right:0}
+  body.has-student-sidebar{padding-right:0}
   .student-sidebar{width:min(290px,86vw);transform:translateX(110%);transition:transform .25s ease}
   body.sidebar-open .student-sidebar{transform:translateX(0)}
   .sidebar-close{display:block}
