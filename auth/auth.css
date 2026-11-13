@@ -67,3 +67,8 @@ body.dark .field-wrap input{color:#edf3ff}
 body.dark input{background:#101d33!important;color:var(--ink)!important;border-color:var(--line)!important}
 @media(max-width:900px){.login-layout{grid-template-columns:1fr;gap:22px}.intro{min-height:390px;padding:36px}.study-art{width:165px}.login-card{max-width:560px}}
 @media(max-width:540px){.page{padding:10px 13px}.topbar{height:65px}.brand img{width:44px;height:44px}.brand strong{font-size:19px}.intro{min-height:340px;padding:26px 23px;border-radius:22px}.intro h1{font-size:43px}.intro>p{font-size:13px;max-width:280px}.study-art{width:125px}.login-card{padding:28px 21px 22px}.login-card h2{font-size:25px}.form-options{font-size:10px}}
+
+
+/* Kshkooll logo sizing on authentication pages */
+.brand .brand-logo-mark{width:46px;height:46px;flex:0 0 46px;object-fit:contain;border-radius:13px}
+.brand.kshkooll-brand{display:inline-flex;align-items:center;gap:11px}
