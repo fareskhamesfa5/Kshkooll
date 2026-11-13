@@ -21,3 +21,50 @@ body.dark .site-header nav a:hover{color:var(--blue)}
 .site-brand .brand-logo-mark{width:40px;height:40px;flex-basis:40px}
 .brand-name{font-weight:800;letter-spacing:.2px}
 .landing-logo{width:112px;height:112px;object-fit:contain}
+
+/* Readable typography in dark mode */
+body.dark,
+body.dark p,
+body.dark li,
+body.dark label,
+body.dark small,
+body.dark span,
+body.dark strong,
+body.dark b,
+body.dark td,
+body.dark th,
+body.dark dt,
+body.dark dd {
+  color: var(--ink);
+}
+body.dark h1,
+body.dark h2,
+body.dark h3,
+body.dark h4,
+body.dark h5,
+body.dark h6,
+body.dark .content h1 {
+  color: var(--navy);
+}
+body.dark .muted,
+body.dark .text-muted,
+body.dark .description,
+body.dark .hint,
+body.dark .subtitle {
+  color: var(--muted);
+}
+body.dark input,
+body.dark textarea,
+body.dark select {
+  color: var(--ink);
+  background-color: var(--paper);
+  border-color: var(--line);
+}
+body.dark input::placeholder,
+body.dark textarea::placeholder {
+  color: var(--muted);
+  opacity: 1;
+}
+body.dark a:not(.primary-link):not(.subject-card):not(.quick-link) {
+  color: var(--blue);
+}
