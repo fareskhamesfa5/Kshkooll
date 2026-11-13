@@ -12,3 +12,37 @@ body.dark{--navy:#e8efff;--navy2:#b8c9e9;--paper:#17243d;--ink:#edf3ff;--muted:#
 .site-header nav a{color:var(--muted);font-size:14px;font-weight:600}
 .site-header nav a:hover,.site-header nav a.active{color:var(--blue)}
 @media(max-width:650px){.site-header{align-items:flex-start;flex-direction:column;padding:12px 5%}.site-header nav{gap:12px}}
+
+
+/* Dark dashboard surfaces and contrast */
+body.dark .stat-card,
+body.dark .subject-card,
+body.dark .quick-link{
+  background:linear-gradient(145deg,#172a48,#12213a);
+  border-color:#2b4164;
+  color:#edf4ff;
+  box-shadow:0 14px 34px rgba(0,0,0,.22);
+}
+body.dark .stat-top,
+body.dark .stat-note,
+body.dark .subject-card p,
+body.dark .quick-link small,
+body.dark .section-heading p,
+body.dark .dash-date,
+body.dark .dash-footer{color:#a9bad4}
+body.dark .stat-value,
+body.dark .subject-card h3,
+body.dark .quick-link b,
+body.dark .section-heading h2{color:#edf4ff}
+body.dark .stat-icon,
+body.dark .subject-icon,
+body.dark .quick-icon{background:#20395e;color:#cfe1ff}
+body.dark .welcome-panel{
+  background:linear-gradient(120deg,#102344,#1b477d);
+  box-shadow:0 20px 45px rgba(0,0,0,.3);
+}
+body.dark .logout-button{
+  background:#172a48;
+  border-color:#2b4164;
+  color:#edf4ff;
+}
