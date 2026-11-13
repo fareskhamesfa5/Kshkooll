@@ -1,14 +1,103 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>الملف الشخصي | Kshkooll</title><link rel="stylesheet" href="../css/global.css"><script src="../js/theme.js" defer></script></head>
-<body><header class="site-header"><a href="dashboard.html">Kshkooll</a><nav><a href="dashboard.html">الرئيسية</a><a href="profile.html">حسابي</a><a href="settings.html">الإعدادات</a></nav></header>
-<main class="content"><p class="tag">Kshkooll • STUDY SPACE</p><h1>ملفي الشخصي</h1><p id="profileInfo">جارٍ تحميل البيانات...</p><a class="primary-link" href="dashboard.html">العودة للرئيسية</a></main>
-<script type="module">
-import { requireUser, getMyProfile } from "../js/session.js";
-const user = await requireUser();
-if (user) {
- const p = await getMyProfile(user);
- document.getElementById("profileInfo").textContent = p
- ? `الاسم: ${p.full_name || "غير محدد"} — البريد: ${user.email} — نوع الحساب: ${p.role === "admin" ? "مدير" : "طالب"}`
- : `البريد الإلكتروني: ${user.email}`;
-}
-</script></body></html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101b36">
+  <title>ملفي الشخصي | Kshkooll</title>
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/profile.css">
+  <script src="../js/theme.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="site-brand" href="dashboard.html">Kshkooll<span style="color:var(--blue)">.</span></a>
+    <nav aria-label="التنقل الرئيسي">
+      <a href="dashboard.html">الرئيسية</a>
+      <a class="active" href="profile.html" aria-current="page">حسابي</a>
+      <a href="progress.html">تقدمي</a>
+      <a href="exams.html">الاختبارات</a>
+      <a href="settings.html">الإعدادات</a>
+    </nav>
+  </header>
+
+  <main class="profile-page">
+    <div class="profile-heading">
+      <p class="tag">MY ACCOUNT • KSHKOOLL</p>
+      <h1>ملفي الشخصي</h1>
+      <p>بيانات حسابك الأساسية في مكان واحد.</p>
+    </div>
+
+    <div id="profileState" class="profile-state" role="status">جارٍ تحميل بيانات حسابك...</div>
+
+    <section id="profileContent" hidden>
+      <div class="profile-hero">
+        <div class="profile-avatar" id="profileAvatar" aria-hidden="true">K</div>
+        <div class="profile-identity">
+          <h2 id="profileName">—</h2>
+          <p id="profileEmail">—</p>
+          <span class="profile-role" id="profileRole">طالب</span>
+        </div>
+      </div>
+
+      <div class="profile-grid">
+        <section class="profile-info-card">
+          <h3>المعلومات الشخصية</h3>
+          <div class="profile-field"><span>الاسم الكامل</span><strong id="detailName">—</strong></div>
+          <div class="profile-field"><span>اسم المستخدم</span><strong id="detailUsername">—</strong></div>
+          <div class="profile-field"><span>البريد الإلكتروني</span><strong id="detailEmail">—</strong></div>
+        </section>
+        <section class="profile-info-card">
+          <h3>معلومات الحساب</h3>
+          <div class="profile-field"><span>نوع الحساب</span><strong id="detailRole">طالب</strong></div>
+          <div class="profile-field"><span>تاريخ إنشاء الحساب</span><strong id="detailCreated">—</strong></div>
+          <div class="profile-field"><span>حالة الجلسة</span><strong>مسجل الدخول</strong></div>
+        </section>
+      </div>
+
+      <div class="profile-actions">
+        <a class="primary" href="dashboard.html">العودة إلى لوحة التحكم</a>
+        <a href="settings.html">إعدادات الحساب</a>
+      </div>
+    </section>
+  </main>
+
+  <script type="module">
+    import { requireUser, getMyProfile } from "../js/session.js";
+
+    const state = document.getElementById("profileState");
+    const content = document.getElementById("profileContent");
+    const show = (id, value) => { document.getElementById(id).textContent = value || "غير محدد"; };
+
+    try {
+      const user = await requireUser();
+      if (!user) throw new Error("لم يتم العثور على جلسة دخول.");
+      const profile = await getMyProfile(user);
+      const fullName = profile?.full_name || user.user_metadata?.full_name || user.email?.split("@")[0] || "مستخدم Kshkooll";
+      const username = profile?.username || "غير محدد";
+      const role = profile?.role === "admin" ? "مشرف" : profile?.role === "owner" ? "مدير" : "طالب";
+      const initial = [...fullName.trim()][0] || "K";
+
+      show("profileAvatar", initial);
+      show("profileName", fullName);
+      show("profileEmail", user.email);
+      show("profileRole", role);
+      show("detailName", fullName);
+      show("detailUsername", username);
+      show("detailEmail", user.email);
+      show("detailRole", role);
+
+      const createdAt = profile?.created_at || user.created_at;
+      const createdLabel = createdAt
+        ? new Intl.DateTimeFormat("ar-EG", { year: "numeric", month: "long", day: "numeric" }).format(new Date(createdAt))
+        : "غير متاح";
+      show("detailCreated", createdLabel);
+
+      state.hidden = true;
+      content.hidden = false;
+    } catch (error) {
+      state.textContent = error?.message || "تعذر تحميل بيانات الحساب. حدّث الصفحة وحاول مرة أخرى.";
+    }
+  </script>
+</body>
+</html>
