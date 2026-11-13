@@ -166,3 +166,32 @@ body.has-student-sidebar .header-profile-link{left:70px;right:auto}
   body.has-student-sidebar .site-header .theme-toggle{left:14px;right:auto}
   body.has-student-sidebar .header-profile-link{left:70px;right:auto}
 }
+
+
+/* Phone layout: fixed, compact controls with no dependence on header/nav flow. */
+@media screen and (max-width:600px){
+  body.has-student-sidebar .site-header{position:relative!important;min-height:64px!important;padding:8px 12px!important;display:block!important}
+  body.has-student-sidebar .site-header .site-brand,
+  body.has-student-sidebar .site-header .kshkooll-brand{
+    position:fixed!important;top:10px!important;right:12px!important;left:auto!important;
+    width:42px!important;height:42px!important;min-height:42px!important;
+    display:grid!important;place-items:center!important;gap:0!important;
+    padding:0!important;margin:0!important;font-size:0!important;z-index:1004!important;
+  }
+  body.has-student-sidebar .site-header .site-brand .brand-logo-mark,
+  body.has-student-sidebar .site-header .kshkooll-brand .brand-logo-mark{
+    display:block!important;width:40px!important;height:40px!important;flex:none!important;
+  }
+  body.has-student-sidebar .site-header .site-brand span,
+  body.has-student-sidebar .site-header .kshkooll-brand span{display:none!important}
+  body.has-student-sidebar .site-header .theme-toggle{
+    position:fixed!important;top:11px!important;left:12px!important;right:auto!important;
+    width:40px!important;height:40px!important;z-index:1004!important;
+  }
+  body.has-student-sidebar .header-profile-link{
+    position:fixed!important;top:10px!important;left:62px!important;right:auto!important;
+    width:42px!important;height:42px!important;z-index:1004!important;
+  }
+  body.sidebar-open .site-header .site-brand,
+  body.sidebar-open .site-header .kshkooll-brand{opacity:0!important;visibility:hidden!important}
+}
