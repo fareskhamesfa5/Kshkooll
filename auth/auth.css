@@ -72,3 +72,51 @@ body.dark input{background:#101d33!important;color:var(--ink)!important;border-c
 /* Kshkooll logo sizing on authentication pages */
 .brand .brand-logo-mark{width:46px;height:46px;flex:0 0 46px;object-fit:contain;border-radius:13px}
 .brand.kshkooll-brand{display:inline-flex;align-items:center;gap:11px}
+
+
+/* Consistent dark authentication design */
+body.dark{
+  --bg:#091326;
+  --ink:#edf4ff;
+  --muted:#a9bad4;
+  --line:#2a3d5d;
+  --blue:#79adff;
+  --paper:#172640;
+  background:radial-gradient(ellipse at 15% 5%,rgba(39,100,183,.18),transparent 40%),#091326;
+  color:var(--ink);
+}
+body.dark .topbar{border-color:var(--line)}
+body.dark .brand,
+body.dark .login-card h2,
+body.dark form>label{color:var(--ink)}
+body.dark .login-card,
+body.dark .register-card,
+body.dark .recovery{
+  background:#14243e;
+  background-image:none;
+  border-color:var(--line);
+  color:var(--ink);
+  box-shadow:0 20px 50px rgba(0,0,0,.3);
+}
+body.dark .subtitle,
+body.dark .remember,
+body.dark .security-note,
+body.dark footer{color:var(--muted)}
+body.dark .field-wrap{
+  background:#0d1b32;
+  border-color:var(--line);
+}
+body.dark .field-wrap input,
+body.dark input{
+  background:transparent!important;
+  color:var(--ink)!important;
+}
+body.dark .field-wrap input::placeholder{color:#91a5c3}
+body.dark .create-link{
+  color:#b9d4ff;
+  background:#192d4d;
+  border-color:#36577f;
+}
+body.dark .separator:before,
+body.dark .separator:after{background:var(--line)}
+body.dark .theme-toggle{background:#172b49;color:var(--ink);border-color:var(--line)}
