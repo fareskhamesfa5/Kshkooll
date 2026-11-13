@@ -144,3 +144,11 @@ body.has-student-sidebar .header-profile-link{position:fixed;top:14px;left:70px;
   body.has-student-sidebar .site-header .theme-toggle{left:126px;right:auto;top:16px}
   body.has-student-sidebar .header-profile-link{left:70px;right:auto;top:14px}
 }
+
+/* Keep the brand logo alone at the far right; profile and theme controls stay on the left. */
+body.has-student-sidebar .site-header .site-brand,
+body.has-student-sidebar .site-header .kshkooll-brand{left:auto;right:14px}
+@media(max-width:760px){
+  body.has-student-sidebar .site-header .site-brand,
+  body.has-student-sidebar .site-header .kshkooll-brand{left:auto;right:14px}
+}
