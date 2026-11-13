@@ -123,7 +123,7 @@
 
   // Shared student sidebar on learning pages (authentication screens stay focused).
   const pagePath = window.location.pathname;
-  if (!/\/auth\//.test(pagePath) && !document.body.classList.contains("landing")) {
+  if (!/\/auth\//.test(pagePath)) {
     const rootUrl = new URL("../", scriptUrl);
     const routes = [
       { label: "الرئيسية", href: "pages/dashboard.html", icon: "⌂", match: "/pages/dashboard.html" },
