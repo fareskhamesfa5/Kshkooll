@@ -42,13 +42,17 @@ if (loginForm) {
     rememberBox.checked = true;
   }
 
+  const submitButton = document.getElementById("loginSubmit");
+  const submitLabel = submitButton?.querySelector(".submit-label");
   const togglePassword = document.getElementById("togglePassword");
   if (togglePassword) {
     togglePassword.addEventListener("click", () => {
       const field = document.getElementById("password");
       const showing = field.type === "text";
       field.type = showing ? "password" : "text";
-      togglePassword.textContent = showing ? "إظهار" : "إخفاء";
+      togglePassword.querySelector("span").textContent = showing ? "إظهار" : "إخفاء";
+      togglePassword.setAttribute("aria-label", showing ? "إظهار كلمة المرور" : "إخفاء كلمة المرور");
+      togglePassword.querySelector("use").setAttribute("href", showing ? "../assets/icons/icons.svg#icon-eye" : "../assets/icons/icons.svg#icon-eyeoff");
     });
   }
 
@@ -62,8 +66,12 @@ if (loginForm) {
       return;
     }
 
+    if (submitButton) { submitButton.disabled = true; submitButton.setAttribute("aria-busy", "true"); }
+    if (submitLabel) submitLabel.textContent = "جارٍ تسجيل الدخول...";
     const { data, error } = await supabase.auth.signInWithPassword({ email, password });
     if (error) {
+      if (submitButton) { submitButton.disabled = false; submitButton.removeAttribute("aria-busy"); }
+      if (submitLabel) submitLabel.textContent = "تسجيل الدخول";
       showStatus(status, error.message.includes("Email not confirmed")
         ? "أكد بريدك الإلكتروني من الرسالة التي أرسلناها لك أولاً."
         : "تعذر تسجيل الدخول. راجع البريد وكلمة المرور وحاول مرة أخرى.");
