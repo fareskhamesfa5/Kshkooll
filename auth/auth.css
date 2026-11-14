@@ -120,3 +120,10 @@ body.dark .create-link{
 body.dark .separator:before,
 body.dark .separator:after{background:var(--line)}
 body.dark .theme-toggle{background:#172b49;color:var(--ink);border-color:var(--line)}
+
+
+/* Animated SVG theme-control icon */
+.theme-toggle-icon{width:21px;height:21px;display:block;object-fit:contain;transition:transform .35s ease,opacity .2s ease}
+.theme-toggle-icon.is-animating{animation:authThemeIconPop .48s cubic-bezier(.2,.8,.2,1)}
+@keyframes authThemeIconPop{0%{transform:rotate(-100deg) scale(.35);opacity:.2}65%{transform:rotate(18deg) scale(1.2);opacity:1}100%{transform:rotate(0) scale(1)}}
+@media(prefers-reduced-motion:reduce){.theme-toggle-icon.is-animating{animation:none}}
