@@ -6,10 +6,7 @@
   const logoUrl = new URL("../assets/images/logo.svg", scriptUrl).href;
   const spriteUrl = new URL("icons.svg", iconsBase).href;
   const iconMarkup = (name, className = "") => `<svg class="ui-icon ${className}" aria-hidden="true" focusable="false"><use href="${spriteUrl}#icon-${name}"></use></svg>`;
-  const icons = {
-    light: new URL("moon.svg", iconsBase).href,
-    dark: new URL("sun.svg", iconsBase).href
-  };
+  // Google Material Symbols Rounded are stored locally in the SVG sprite.
 
   const saved = localStorage.getItem(KEY) || "light";
   document.body.classList.toggle("dark", saved === "dark");
@@ -102,18 +99,15 @@
     }
   }
 
-  const icon = document.createElement("img");
-  icon.className = "theme-toggle-icon";
-  icon.alt = "";
-  icon.draggable = false;
-  button.replaceChildren(icon);
+  button.innerHTML = iconMarkup("moon", "theme-toggle-icon");
+  const icon = button.querySelector(".theme-toggle-icon");
 
   function renderTheme(animate = false) {
     const dark = document.body.classList.contains("dark");
     button.setAttribute("aria-label", dark ? "تفعيل الوضع الفاتح" : "تفعيل الوضع الداكن");
     button.title = dark ? "الوضع الفاتح" : "الوضع الداكن";
     icon.classList.toggle("is-animating", animate);
-    icon.src = dark ? icons.dark : icons.light;
+    icon.innerHTML = `<use href="${spriteUrl}#icon-${dark ? "sun" : "moon"}"></use>`;
     if (animate) icon.addEventListener("animationend", () => icon.classList.remove("is-animating"), { once: true });
   }
   renderTheme();
