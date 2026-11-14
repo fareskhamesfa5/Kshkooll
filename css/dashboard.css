@@ -48,3 +48,17 @@ body.dark .stat-value,body.dark .subject-card h3,body.dark .quick-link b,body.da
 body.dark .stat-icon,body.dark .subject-icon,body.dark .quick-icon{background:#20395e;color:#cfe1ff}
 body.dark .welcome-panel{background:linear-gradient(120deg,#102344,#1b477d);box-shadow:0 20px 45px rgba(0,0,0,.3)}
 body.dark .logout-button{background:#172a48;border-color:#2b4164;color:#edf4ff}
+
+
+/* Hover animation: the person visibly moves out of the button */
+.logout-button:hover .logout-person-icon{
+  animation:logout-person-leaves .7s cubic-bezier(.55,.05,.75,.45) both;
+}
+@keyframes logout-person-leaves{
+  0%{transform:translateX(0);opacity:1}
+  35%{transform:translateX(-3px);opacity:1}
+  100%{transform:translateX(-11px);opacity:.35}
+}
+@media(prefers-reduced-motion:reduce){
+  .logout-button:hover .logout-person-icon{animation:none}
+}
