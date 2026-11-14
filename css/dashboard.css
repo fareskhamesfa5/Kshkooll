@@ -14,11 +14,11 @@ body.dark{--navy:#e8efff;--navy2:#b8c9e9;--paper:#17243d;--ink:#edf3ff;--muted:#
   width:29px;height:29px;display:grid;place-items:center;border-radius:50%;
   background:#ffe5e6;color:#c63d48;transition:background .2s ease,color .2s ease,transform .2s ease;
 }
-.logout-button .ui-icon{width:17px;height:17px;fill:currentColor}
+.logout-google-icon{font-family:'Material Symbols Rounded';font-weight:normal;font-style:normal;font-size:20px;line-height:1;letter-spacing:normal;text-transform:none;display:inline-block;white-space:nowrap;direction:ltr;font-feature-settings:'liga';-webkit-font-feature-settings:'liga';-webkit-font-smoothing:antialiased;transition:transform .2s ease,opacity .2s ease}
 .logout-label{white-space:nowrap}
 .logout-button:hover{background:#c63d48;border-color:#c63d48;color:#fff;box-shadow:0 7px 18px rgba(198,61,72,.2);transform:translateY(-1px)}
 .logout-button:hover .logout-icon-wrap{background:rgba(255,255,255,.18);color:#fff;transform:translateX(-2px)}
-.logout-button:hover .ui-icon{animation:logout-icon-motion .55s ease-in-out}
+.logout-button:hover .logout-google-icon{animation:logout-icon-motion .55s ease-in-out}
 @keyframes logout-icon-motion{
   0%,100%{transform:translateX(0) scale(1)}
   35%{transform:translateX(-4px) scale(1.12)}
@@ -32,7 +32,7 @@ body.dark .logout-icon-wrap{background:#512b3a;color:#ffadb4}
 body.dark .logout-button:hover{background:#c63d48;border-color:#c63d48;color:#fff}
 body.dark .logout-button:hover .logout-icon-wrap{background:rgba(255,255,255,.18);color:#fff}
 @media(max-width:650px){.logout-button{min-height:39px;padding:5px 11px 5px 7px;font-size:12px}.logout-icon-wrap{width:27px;height:27px}}
-@media(prefers-reduced-motion:reduce){.logout-button,.logout-icon-wrap{transition:none}.logout-button:hover .ui-icon{animation:none}}
+@media(prefers-reduced-motion:reduce){.logout-button,.logout-icon-wrap{transition:none}.logout-button:hover .logout-google-icon{animation:none}}
 
 .site-header{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;gap:18px;padding:13px 5%;background:var(--header);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
 .site-brand{font-size:22px;font-weight:800;color:var(--ink)}
@@ -51,7 +51,7 @@ body.dark .logout-button{background:#172a48;border-color:#2b4164;color:#edf4ff}
 
 
 /* Hover animation: the person visibly moves out of the button */
-.logout-button:hover .logout-person-icon{
+.logout-button:hover .logout-google-icon{
   animation:logout-person-leaves .7s cubic-bezier(.55,.05,.75,.45) both;
 }
 @keyframes logout-person-leaves{
@@ -60,5 +60,5 @@ body.dark .logout-button{background:#172a48;border-color:#2b4164;color:#edf4ff}
   100%{transform:translateX(-11px);opacity:.35}
 }
 @media(prefers-reduced-motion:reduce){
-  .logout-button:hover .logout-person-icon{animation:none}
+  .logout-button:hover .logout-google-icon{animation:none}
 }
