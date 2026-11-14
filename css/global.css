@@ -196,3 +196,18 @@ body.has-student-sidebar .header-profile-link{left:70px;right:auto}
   body.sidebar-open .site-header .kshkooll-brand{opacity:0!important;visibility:hidden!important}
 }
 
+
+
+/* SVG icon system and restrained micro-interactions */
+.ui-icon{width:21px;height:21px;display:block;flex:0 0 auto;fill:none;stroke:currentColor;overflow:visible;transition:transform .22s ease,opacity .22s ease}
+.sidebar-link-icon .ui-icon{width:19px;height:19px}
+.sidebar-link:hover .ui-icon,.header-profile-link:hover .ui-icon,.sidebar-close:hover .ui-icon{animation:kshIconNudge .48s ease both}
+.header-profile-link .ui-icon{width:22px;height:22px}
+.sidebar-close{width:34px;height:34px;display:grid;place-items:center;border:1px solid var(--line);border-radius:10px;background:transparent;color:var(--muted);cursor:pointer}
+.sidebar-close .ui-icon{width:18px;height:18px}
+.header-profile-link{transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}
+.header-profile-link:hover{transform:translateY(-2px);border-color:var(--blue);box-shadow:0 8px 20px rgba(38,119,232,.18)}
+@keyframes kshIconNudge{0%{transform:scale(1) rotate(0)}35%{transform:scale(1.16) rotate(-8deg)}70%{transform:scale(.96) rotate(5deg)}100%{transform:scale(1) rotate(0)}}
+.theme-toggle-icon{transform-origin:50% 50%}
+.theme-toggle-icon.is-animating{animation:themeIconPop .52s cubic-bezier(.2,.8,.2,1)}
+@media(prefers-reduced-motion:reduce){.ui-icon,.header-profile-link{transition:none}.sidebar-link:hover .ui-icon,.header-profile-link:hover .ui-icon,.sidebar-close:hover .ui-icon,.theme-toggle-icon.is-animating{animation:none}}
