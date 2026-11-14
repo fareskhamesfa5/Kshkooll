@@ -4,6 +4,8 @@
   const scriptUrl = document.currentScript.src;
   const iconsBase = new URL("../assets/icons/", scriptUrl);
   const logoUrl = new URL("../assets/images/logo.svg", scriptUrl).href;
+  const spriteUrl = new URL("icons.svg", iconsBase).href;
+  const iconMarkup = (name, className = "") => `<svg class="ui-icon ${className}" aria-hidden="true" focusable="false"><use href="${spriteUrl}#icon-${name}"></use></svg>`;
   const icons = {
     light: new URL("moon.svg", iconsBase).href,
     dark: new URL("sun.svg", iconsBase).href
@@ -126,15 +128,15 @@
   if (!/\/auth\//.test(pagePath)) {
     const rootUrl = new URL("../", scriptUrl);
     const routes = [
-      { label: "الرئيسية", href: "pages/dashboard.html", icon: "⌂", match: "/pages/dashboard.html" },
-      { label: "اللغة العربية", href: "subjects/arabic/index.html", icon: "ع", match: "/subjects/arabic/" },
-      { label: "اللغة الإنجليزية", href: "subjects/english/index.html", icon: "EN", match: "/subjects/english/" },
-      { label: "التاريخ", href: "subjects/history/index.html", icon: "ت", match: "/subjects/history/" },
-      { label: "البرمجة", href: "subjects/programming/index.html", icon: "</>", match: "/subjects/programming/" },
-      { label: "الامتحانات", href: "pages/exams.html", icon: "▤", match: "/pages/exams.html" },
-      { label: "التقدم الدراسي", href: "pages/progress.html", icon: "↗", match: "/pages/progress.html" },
-      { label: "الملف الشخصي", href: "pages/profile.html", icon: "◎", match: "/pages/profile.html" },
-      { label: "الإعدادات", href: "pages/settings.html", icon: "⚙", match: "/pages/settings.html" }
+      { label: "الرئيسية", href: "pages/dashboard.html", icon: "home", match: "/pages/dashboard.html" },
+      { label: "اللغة العربية", href: "subjects/arabic/index.html", icon: "book", match: "/subjects/arabic/" },
+      { label: "اللغة الإنجليزية", href: "subjects/english/index.html", icon: "languages", match: "/subjects/english/" },
+      { label: "التاريخ", href: "subjects/history/index.html", icon: "landmark", match: "/subjects/history/" },
+      { label: "البرمجة", href: "subjects/programming/index.html", icon: "code", match: "/subjects/programming/" },
+      { label: "الامتحانات", href: "pages/exams.html", icon: "exam", match: "/pages/exams.html" },
+      { label: "التقدم الدراسي", href: "pages/progress.html", icon: "progress", match: "/pages/progress.html" },
+      { label: "الملف الشخصي", href: "pages/profile.html", icon: "user", match: "/pages/profile.html" },
+      { label: "الإعدادات", href: "pages/settings.html", icon: "settings", match: "/pages/settings.html" }
     ];
     const sidebar = document.createElement("aside");
     sidebar.className = "student-sidebar";
@@ -145,7 +147,7 @@
         <a class="sidebar-brand" href="${new URL("pages/dashboard.html", rootUrl).href}">
           <img src="${logoUrl}" alt="" /> <span>Kshkooll</span>
         </a>
-        <button class="sidebar-close" type="button" aria-label="إغلاق القائمة">×</button>
+        <button class="sidebar-close" type="button" aria-label="إغلاق القائمة">${iconMarkup("close")}</button>
       </div>
       <p class="sidebar-caption">مساحة التعلم</p>
       <nav class="sidebar-nav"></nav>
@@ -156,7 +158,7 @@
       const link = document.createElement("a");
       link.className = "sidebar-link";
       link.href = new URL(item.href, rootUrl).href;
-      link.innerHTML = `<span class="sidebar-link-icon" aria-hidden="true">${item.icon}</span><span>${item.label}</span>`;
+      link.innerHTML = `<span class="sidebar-link-icon">${iconMarkup(item.icon)}</span><span>${item.label}</span>`;
       if (pagePath.includes(item.match)) {
         link.classList.add("active");
         link.setAttribute("aria-current", "page");
@@ -187,7 +189,7 @@
       profileLink.href = new URL("pages/profile.html", rootUrl).href;
       profileLink.setAttribute("aria-label", "المعلومات الشخصية");
       profileLink.title = "المعلومات الشخصية";
-      profileLink.innerHTML = '<span aria-hidden="true">◎</span>';
+      profileLink.innerHTML = iconMarkup("user");
       header.appendChild(profileLink);
       const brandToggle = header.querySelector(".site-brand, .kshkooll-brand");
       if (brandToggle) {
