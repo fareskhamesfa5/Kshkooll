@@ -5,7 +5,7 @@
   const iconsBase = new URL("../assets/icons/", scriptUrl);
   const logoUrl = new URL("../assets/images/logo.svg", scriptUrl).href;
   const spriteUrl = new URL("icons.svg", iconsBase).href;
-  const iconMarkup = (name, className = "") => `<svg class="ui-icon ${className}" aria-hidden="true" focusable="false"><use href="${spriteUrl}#icon-${name}"></use></svg>`;
+  const iconMarkup = (name, className = "") => `<svg class="ui-icon ${className}" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="${spriteUrl}#icon-${name}"></use></svg>`;
   // Google Material Symbols Rounded are stored locally in the SVG sprite.
 
   const saved = localStorage.getItem(KEY) || "light";
