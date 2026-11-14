@@ -199,7 +199,7 @@ body.has-student-sidebar .header-profile-link{left:70px;right:auto}
 
 
 /* SVG icon system and restrained micro-interactions */
-.ui-icon{width:21px;height:21px;display:block;flex:0 0 auto;fill:none;stroke:currentColor;overflow:visible;transition:transform .22s ease,opacity .22s ease}
+.ui-icon{width:21px;height:21px;display:block;flex:0 0 auto;fill:currentColor;stroke:none;overflow:visible;transition:transform .22s ease,opacity .22s ease}
 .sidebar-link-icon .ui-icon{width:19px;height:19px}
 .sidebar-link:hover .ui-icon,.header-profile-link:hover .ui-icon,.sidebar-close:hover .ui-icon{animation:kshIconNudge .48s ease both}
 .header-profile-link .ui-icon{width:22px;height:22px}
